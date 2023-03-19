@@ -1,11 +1,25 @@
 <script type="module">
+  
+  const textNode = document.createTextNode("初期値");
+  document.body.appendChild(textNode);
   setInterval(() => {
-    const textNode = document.createTextNode(`現在時刻: ${new Date().toLocaleString()}`);
+    textNode.data = `現在時刻: ${new Date().toLocaleString()}`;
+  }, 50);
 
-    if (document.body.childNodes.length <= 5) {    
-      document.body.appendChild(textNode);
-    } else {
-      document.body.replaceChildren(textNode)
-    }
-  }, 1000);
+  document.body.style["color"] = "navy";
+  document.body.style["background-color"] = "wheat";
+
+  document.body.style["font-size"] = "25px";
+  document.body.style["font-family"] = "Impact";
+
+  document.body.style["border-style"] = "dashed";
+  document.body.style["border-width"] = "5px";
+  document.body.style["border-color"] = "red";
+  document.body.style["border-radius"] = "30px";
+
+  document.body.style["margin"] = "50px";
+  document.body.style["padding"] = "20px";
+
+  document.body.style["width"] = "600px";
+  document.body.style["height"] = "300px";
 </script>
