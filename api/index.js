@@ -4,14 +4,21 @@ const messages = [];
 const server = http.createServer((request, response) => {
   response.setHeader('Content-Type', 'text/plain; charset=UTF-8');
 
-  messages.push(request.url);
+  if (request.url === "/favicon.ico" || request.url === "/robots.txt") {
+    // 何も返さない
+  } else if (request.url === "/") {
+    response.write("メッセージを送ってください。");
+  } else {
+    messages.push(request.url);
+    
+    let text = "";
+    for (const message of messages) {
+      text += `${decodeURIComponent(message).slice(1)}\n`;
+    }
 
-  let text = "";
-  for (const message of messages) {
-      text += `${message}\n`;
+    response.write(text);
   }
 
-  response.write(text);
   response.end();
 });
 
