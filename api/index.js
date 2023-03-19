@@ -1,9 +1,11 @@
 const http = require('node:http');
 
 const server = http.createServer((request, response) => {
-  response.setHeader('Content-Type', 'text/html; charset=UTF-8'); // 変更: plain->html
+  response.setHeader('Content-Type', 'text/html; charset=UTF-8');
   response.write(`
     <script type="module">
+      const textNode = document.createTextNode("こんにちは！");
+      document.body.appendChild(textNode);
     </script>
   `);
   response.end();
