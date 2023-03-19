@@ -4,8 +4,11 @@ const server = http.createServer((request, response) => {
   response.setHeader('Content-Type', 'text/html; charset=UTF-8');
   response.write(`
     <script type="module">
-      const textNode = document.createTextNode("I’msenmaru ！");
+      const textNode = document.createTextNode("こんにちは！");
       document.body.appendChild(textNode);
+      setInterval(() => {
+        textNode.data = new Date().toLocaleString();
+      }, 3000);
     </script>
   `);
   response.end();
